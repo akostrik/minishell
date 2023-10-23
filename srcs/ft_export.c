@@ -55,6 +55,7 @@ static int	printf_env_style_export(char **envp)
 	i = -1;
 	while (bub[++i] != NULL)
 	{
+		// an error here : we should provide the case where there is no '=' in the varibale 
 		p = ft_strchr(bub[i], '=') - bub[i];
 		tmp = ft_substr(bub[i], 0, p);
 		if ((size_t)printf("export -x %s=\"%s\"\n", tmp,
@@ -66,9 +67,6 @@ static int	printf_env_style_export(char **envp)
 	free_arr(bub);
 	return (0);
 }
-
-// new_envp is placed to the same variable **envp
-// envp[0], envp[1] ... are not reallocated
 
 static int	add_variable_to_env(char *key_and_val, char ***envp)
 {
@@ -90,7 +88,6 @@ static int	add_variable_to_env(char *key_and_val, char ***envp)
 	return (0);
 }
 
-//fprintf(stderr, "trim input: -%s-\n", key_and_val);
 int	ft_export_1_var(char *key_and_val0, char ***envp)
 {
 	char	*key_and_val;
