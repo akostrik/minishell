@@ -6,19 +6,37 @@
 
 NAME	= minishell
 
-LIBFT	= make -C ./libft
+LIBFT	= make bonus -C ./libft
 
 SRC_DIR	= srcs/
 
 OBJ_DIR	= objs/
 
-FILES	=	1_main.c \
-			2_parse_and_opens_fds.c \
-			3_exec.c 4_builtins.c \
-			5_utils_parse.c \
-			6_utils_exec.c \
-			7_utils_lst.c \
-			8_utils.c 
+FILES	=	prompt.c \
+			parser_expand.c \
+			array_utils.c \
+			parser_cmd.c \
+			parser_cmd_add.c \
+			parser_cmd_utils.c \
+			lst_utils.c \
+			parser_utils.c \
+			signal.c \
+			executor.c \
+			manage_redir.c \
+			heredoc.c \
+			manage_builtins.c \
+			manage_fork.c \
+			find_cmd_path.c \
+			utils.c \
+			ft_echo.c \
+			ft_exit.c  \
+			ft_env.c \
+			ft_export.c \
+			ft_unset.c \
+			ft_cd.c \
+			ft_cd_utils.c \
+			ft_pwd.c \
+			builtins_utils.c
 
 SRCS	= $(addprefix $(SRC_DIR), $(FILES))
 
@@ -28,7 +46,7 @@ FLAGS	= -Wall -Wextra -Werror -g3
 
 LIB		= -Llibft -lft -lreadline # -L /usr/local/opt/readline/lib
 
-INCL	= -I ./includes/ -I ./libft # -I /usr/local/opt/readline/include
+INCL	= -I ./includes/ -I ./libft/ # -I /usr/local/opt/readline/include
 
 
 objs/%.o : ./srcs/%.c
@@ -38,7 +56,7 @@ objs/%.o : ./srcs/%.c
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-			@$(LIBFT)
+			$(LIBFT)
 			cc $(OBJS) -o $(NAME) $(LIB)
 
 clean:
