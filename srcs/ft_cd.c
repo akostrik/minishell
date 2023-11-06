@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// for tests
-// printf("%s\n", getcwd(NULL, 0)); // tmp
+// an error here : cd ../../../../../../../../../../../usr doesn't work
 
 #include "minishell.h"
 
